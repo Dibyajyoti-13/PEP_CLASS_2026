@@ -10,20 +10,20 @@ int main(){
     int e;
 
     cin >> n >> e;
-    map<int, list<int>> adjList;
+    map<int, list<pair<int, int>>> adjList;
 
     for(int i = 0; i < e; i++){
-        int u, v;
-        cin >> u >> v;
-        adjList[u].push_back(v);
-        adjList[v].push_back(u);
+        int u, v, w;
+        cin >> u >> v >> w;
+        adjList[u].push_back({v, w});
+        adjList[v].push_back({u, w});
     }
     cout << "Adjacency List : " << endl;
 
     for(auto i : adjList){
         cout << i.first << " -> ";
         for(auto j : i.second){
-            cout << j << " ";
+            cout << j.first <<"(" << j.second << ")\t" ;
         }
         cout << endl;
     }
